@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pokemons em eventos</title>
+</head>
+<body>
+    <ul></ul>
+
+    <script type="text/javascript">
+        if(!!window.EventSource){
+            var evtSource = new EventSource('pokemons/events');
+            var evtList = document.querySelector('ul');
+
+            evtSource.onmessage = function (evt) {
+                var newElement = document.createElement('li');
+
+                newElement.textContent = "Event: " + evt.data;
+                evtList.appendChild(newElement);
+            }
+        }
+    </script>
+</body>
+</html>

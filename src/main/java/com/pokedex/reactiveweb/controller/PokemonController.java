@@ -70,7 +70,7 @@ public class PokemonController {
         return repository.deleteAll();
     }
 
-    
+
     @GetMapping(value = "/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<PokemonEvent> getPokemonEvents() {
         return Flux.interval(Duration.ofSeconds(5))
